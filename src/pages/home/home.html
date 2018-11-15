@@ -7,8 +7,42 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <form [formGroup]="vatForm" (submit)="findVat()" noValidate>
+      <ion-item>
+          <ion-label stacked>Please Enter the Id</ion-label>
+          <ion-input formControlName="vatNumber" placeholder="ID" ></ion-input>
+  
+        </ion-item>
+  </form>
+  <button ion-button block [disabled]= "!vatForm.value.vatNumber" type="submit" (tap)="findVat()" color="dark">Get Details</button>
+
+<ion-card *ngIf="showCard"  >  
+  <ion-card-header>
+      <ion-icon name="ios-folder" color="secondary" class="card-header" style="font-size:25px; border-radius: 25px;padding: 10px;box-shadow: 0 0 15px 0px;"></ion-icon>
+      <p>
+        <b> Details</b>
+      </p>
+    </ion-card-header>
+
+    <h1>Vat Number </h1>
+    <p>{{details.VATNumber}}</p> 
+
+    <h1>Name </h1>
+    <p>{{details.Name}}</p>
+
+      <h1>Address </h1>
+      <p>{{details.Address}}</p>
+
+      <h1>Request Date </h1>
+      <!-- <p>{{details.RequestDate | date:'EEE M/d/yy' }}</p> -->
+      <p>{{details.RequestDate  | date:fullDate }}</p>
+
+    <ion-card-content>
+
+      <button ion-button full color="secondary" style="padding-top:12px;" class="btn-shadow" (click)="close()" >
+      Close
+    </button>
+    </ion-card-content>
+    
+  </ion-card>
 </ion-content>
