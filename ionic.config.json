@@ -1,0 +1,7 @@
+{
+  "name": "VatCheck",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
