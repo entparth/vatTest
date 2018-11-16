@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiProvider } from '../../providers/api/api';
 
@@ -14,7 +14,7 @@ export class HomePage {
   requestDate:any;
   date = new Date;
   
-  constructor(public navCtrl: NavController,public formbuilder: FormBuilder, public api:ApiProvider) {
+  constructor(public navCtrl: NavController,public formbuilder: FormBuilder, public api:ApiProvider, public loadingCtrl:LoadingController) {
     this.initializeForm();
   }
 
@@ -30,6 +30,8 @@ export class HomePage {
   findVat(){
     console.log('vat numer',this.vatForm.value)
     this.api.getValues(this.vatForm.value.vatNumber).then((data:any) => {
+    this.presentLoadingDefault();
+
       const splitDate = data.RequestDate.split('+');
       const requestDate = new Date(splitDate[0] + ':' + splitDate[1]);
       console.log('date', requestDate, data.RequestDate);
@@ -51,4 +53,17 @@ export class HomePage {
     this.showCard = false;
 
   }
+
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      content: 'Getting your Data..'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 500);
+  }
+  
 } 

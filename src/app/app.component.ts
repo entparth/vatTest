@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import * as firebase from 'firebase';
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -12,11 +13,26 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
+      this. initializeFirebaseApp();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  initializeFirebaseApp() {
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDQyDX1rjCncgXitBszxbyKkkhuBYhExJk",
+      authDomain: "vat-checker.firebaseapp.com",
+      databaseURL: "https://vat-checker.firebaseio.com",
+      projectId: "vat-checker",
+      storageBucket: "vat-checker.appspot.com",
+      messagingSenderId: "288736345114"
+    };
+  firebase.initializeApp(config);
+
   }
 }
 

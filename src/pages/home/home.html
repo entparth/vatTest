@@ -6,15 +6,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="vatForm" (submit)="findVat()" noValidate>
-    <ion-item class="cust-item">
-      <ion-label stacked>Please Enter the Id</ion-label>
-      <ion-input formControlName="vatNumber" placeholder="ID"></ion-input>
-    </ion-item>
-  </form>
-  <button class="btn-background-color" ion-button full round [disabled]="!vatForm.value.vatNumber" type="submit" (tap)="findVat()">Get
-    Details</button>
+<ion-content>
+  <div *ngIf="!showCard">
+      <form [formGroup]="vatForm" (submit)="findVat()" noValidate>
+          <ion-item class="cust-item">
+            <ion-label class="item-id" stacked>Please Enter the Id</ion-label>
+            <ion-input formControlName="vatNumber" placeholder="ID"></ion-input>
+          </ion-item>
+        </form>
+      <button class="btn-background-color" ion-button full round [disabled]="!vatForm.value.vatNumber" type="submit" (tap)="findVat()">
+        Get Details
+      </button>
+  </div>
+ 
 
 
   <!-- below is the code which will be triggered once submit button is tapped -->
@@ -55,7 +59,7 @@
     </ion-list>
 
     <ion-card-content>
-      <button class="btn-background-color" ion-button full round  (click)="close()">
+      <button class="btn-background-color" ion-button full round (click)="close()">
         Close
       </button>
     </ion-card-content>
