@@ -1,48 +1,64 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Vat Number Checker
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <form [formGroup]="vatForm" (submit)="findVat()" noValidate>
-      <ion-item>
-          <ion-label stacked>Please Enter the Id</ion-label>
-          <ion-input formControlName="vatNumber" placeholder="ID" ></ion-input>
-  
-        </ion-item>
+    <ion-item class="cust-item">
+      <ion-label stacked>Please Enter the Id</ion-label>
+      <ion-input formControlName="vatNumber" placeholder="ID"></ion-input>
+    </ion-item>
   </form>
-  <button ion-button block [disabled]= "!vatForm.value.vatNumber" type="submit" (tap)="findVat()" color="dark">Get Details</button>
+  <button class="btn-background-color" ion-button full round [disabled]="!vatForm.value.vatNumber" type="submit" (tap)="findVat()">Get
+    Details</button>
 
-<ion-card *ngIf="showCard"  >  
-  <ion-card-header>
+
+  <!-- below is the code which will be triggered once submit button is tapped -->
+  <ion-card *ngIf="showCard" class="ion-card-details">
+    <ion-card-header>
       <ion-icon name="ios-folder" color="secondary" class="card-header" style="font-size:25px; border-radius: 25px;padding: 10px;box-shadow: 0 0 15px 0px;"></ion-icon>
       <p>
         <b> Details</b>
       </p>
     </ion-card-header>
 
-    <h1>Vat Number </h1>
-    <p>{{details.VATNumber}}</p> 
+    <ion-list>
+      <ion-item>
+        <h3>Vat Number </h3>
+        <p>{{details.VATNumber}}</p>
+      </ion-item>
+    </ion-list>
 
-    <h1>Name </h1>
-    <p>{{details.Name}}</p>
+    <ion-list>
+      <ion-item>
+        <h3>Name </h3>
+        <p>{{details.Name}}</p>
+      </ion-item>
+    </ion-list>
 
-      <h1>Address </h1>
-      <p>{{details.Address}}</p>
+    <ion-list>
+      <ion-item>
+        <h3>Address </h3>
+        <p>{{details.Address}}</p>
+      </ion-item>
+    </ion-list>
 
-      <h1>Request Date </h1>
-      <!-- <p>{{details.RequestDate | date:'EEE M/d/yy' }}</p> -->
-      <p>{{details.RequestDate  | date:fullDate }}</p>
+    <ion-list>
+      <ion-item>
+        <h3>Request Date </h3>
+        <p>{{details.RequestDate | date:fullDate }}</p>
+      </ion-item>
+    </ion-list>
 
     <ion-card-content>
-
-      <button ion-button full color="secondary" style="padding-top:12px;" class="btn-shadow" (click)="close()" >
-      Close
-    </button>
+      <button class="btn-background-color" ion-button full round  (click)="close()">
+        Close
+      </button>
     </ion-card-content>
-    
+
   </ion-card>
 </ion-content>

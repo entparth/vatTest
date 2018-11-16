@@ -1,8 +1,32 @@
 page-home {
-//   .card-headerDetail {
-//     font-size: 25px;
-//     border-radius: 25px;
-//     padding: 10px;
-//     box-shadow: 0 0 15px 0px;
-//   }
+
+    //background color of the button
+  .btn-background-color {
+    background: none;
+    background-color: #FF2E31 !important;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+  }
+
+    //background color of the nan bar
+  .toolbar .toolbar-background {
+    background: linear-gradient(to right, #00CED1, #00FFFF);
+  }
+
+
+  .cust-item {
+    @media only screen and (max-width: 320px) {
+        margin-bottom: 0.3em;
+    }
+    @media only screen and (min-width:321px) {
+        margin-bottom: 1em;
+    }
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+}   
+.ion-card-details {
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
 }
